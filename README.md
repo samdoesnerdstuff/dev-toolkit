@@ -1,4 +1,9 @@
 # Developer's Toolkit 🛠️
+![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2025-orange.svg)
+![Open Issues](https://img.shields.io/github/issues/heysaiyad/dev-toolkit)
+![Forks](https://img.shields.io/github/forks/heysaiyad/dev-toolkit?style=social)
+![Stars](https://img.shields.io/github/stars/heysaiyad/dev-toolkit?style=social)
+![License](https://img.shields.io/github/license/heysaiyad/dev-toolkit)
 
 A collection of useful online tools for developers. This is a beginner-friendly open-source project perfect for anyone looking to make their first contribution for Hacktoberfest!
 
