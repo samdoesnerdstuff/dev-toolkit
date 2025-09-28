@@ -5,6 +5,8 @@
 ![Stars](https://img.shields.io/github/stars/heysaiyad/dev-toolkit?style=social)
 ![License](https://img.shields.io/github/license/heysaiyad/dev-toolkit)
 
+![Developer's Toolkit Hacktoberfest 2025 Poster](poster.png)
+
 A collection of useful online tools for developers. This is a beginner-friendly open-source project perfect for anyone looking to make their first contribution for Hacktoberfest!
 
 **Live Demo:** [Click Here](https://heysaiyad.github.io/dev-toolkit/)
