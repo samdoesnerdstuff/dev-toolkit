@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Word Counter</title>
+    <link rel="stylesheet" href="../../style.css"> <style>
+        /* Is page ke liye alag se thodi style */
+        .container { max-width: 800px; margin: 40px auto; text-align: left; }
+        textarea { width: 100%; min-height: 200px; font-size: 1.1em; padding: 10px; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header><h1>Word & Character Counter</h1></header>
+    <div class="container">
+        <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+        <div id="result">
+            <p>Words: <span id="word-count">0</span></p>
+            <p>Characters: <span id="char-count">0</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
