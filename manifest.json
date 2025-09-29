@@ -33,6 +33,38 @@
       "form_factor": "wide"
     }
   ],
+  "shortcuts": [
+    {
+      "name": "Word Counter",
+      "short_name": "Word Counter",
+      "description": "Count words, characters, and paragraphs",
+      "url": "/tools/word-counter/",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%23ff6b35'/><text x='48' y='68' font-size='48' text-anchor='middle' fill='white'>📝</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Add Tool",
+      "short_name": "Contribute",
+      "description": "Add your own developer tool",
+      "url": "https://github.com/heysaiyad/dev-toolkit",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect width='96' height='96' fill='%230081b4'/><text x='48' y='68' font-size='48' text-anchor='middle' fill='white'>➕</text></svg>",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "display_override": ["window-controls-overlay", "standalone"],
   "related_applications": [],
   "prefer_related_applications": false
 }
