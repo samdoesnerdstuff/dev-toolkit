@@ -111,7 +111,7 @@
 # 1. Fork this repository (click the Fork button above)
 
 # 2. Clone your fork
-git clone https://github.com/YOUR_USERNAME/dev-toolkit.git
+git clone https://github.com/heysaiyad/dev-toolkit.git
 
 # 3. Navigate to the project
 cd dev-toolkit
