@@ -8,7 +8,6 @@
     </title>
 
     <!-- SEO Meta Tags -->
-
     <meta
       name="description"
       content="DevToolkit - A beautiful collection of free web-based developer tools. Word counter, JSON formatter, color picker, and more. Perfect for Hacktoberfest 2025 contributions!"
@@ -209,7 +208,9 @@
         </p>
         <div class="hero-stats">
           <div class="stat">
-            <span class="stat-number" data-target="8">0</span>
+
+            <span class="stat-number" data-target="9">0</span>
+
             <span class="stat-label">Tools Available</span>
           </div>
           <div class="stat">
@@ -231,7 +232,6 @@
             Add Your Tool
           </a>
         </div>
-
       </div>
     </section>
 
@@ -244,6 +244,111 @@
             Powerful utilities to boost your development workflow
           </p>
         </div>
+
+        <!-- Advanced Search Bar -->
+        <div class="search-container">
+          <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search tools... (try 'word', 'text', or 'counter')"
+              id="toolSearch"
+            />
+            <div class="search-suggestions" id="searchSuggestions"></div>
+          </div>
+          <div class="search-stats" id="searchStats">
+            <span id="resultCount">1</span> tools found
+          </div>
+        </div>
+
+        <div class="tools-filter">
+          <button class="filter-btn active" data-filter="all">
+            <i class="fas fa-grip-horizontal"></i>
+            All Tools
+          </button>
+          <button class="filter-btn" data-filter="text">
+            <i class="fas fa-font"></i>
+            Text Tools
+          </button>
+          <button class="filter-btn" data-filter="code">
+            <i class="fas fa-code"></i>
+            Code Tools
+          </button>
+          <button class="filter-btn" data-filter="utility">
+            <i class="fas fa-cog"></i>
+            Utilities
+          </button>
+        </div>
+
+        <div id="tools-grid" class="tools-grid">
+          <!-- Featured Tool - Word Counter -->
+          <a
+            href="tools/word-counter/index.html"
+            class="tool-card"
+            data-category="text"
+            data-featured="true"
+          >
+            <div class="tool-icon">
+              <i class="fas fa-font"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Word Counter</h3>
+              <p class="tool-description">
+                Advanced text analysis tool with real-time word, character, and
+                paragraph counting. Perfect for writers, bloggers, and content
+                creators who need precise text metrics.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">Text</span>
+                <span class="tag">Analysis</span>
+                <span class="tag">Featured</span>
+              </div>
+            </div>
+            <div class="tool-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+          <!-- Lorem Ipsum Generator -->
+          <a
+            href="tools/lorem-ipsum-generator/index.html"
+            class="tool-card"
+            data-category="text"
+          >
+            <div class="tool-icon">
+              <i class="fas fa-align-justify"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Lorem Ipsum Generator</h3>
+              <p class="tool-description">
+                Generate customizable placeholder text by words or paragraphs
+                for your design and development projects. Perfect for mockups
+                and prototyping.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">Text</span>
+                <span class="tag">Generator</span>
+              </div>
+            </div>
+            <div class="tool-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- JSON Formatter -->
+          <div class="tool-card" data-category="code">
+            <div class="tool-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">JSON Formatter</h3>
+              <p class="tool-description">
+                Format, validate and beautify JSON data with syntax highlighting
+                and error detection.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">JSON</span>
+                <span class="tag">Format</span>
 
         <!-- Advanced Search Bar -->
         <div class="search-container">
@@ -416,6 +521,36 @@
             <div class="tool-arrow">
               <i class="fas fa-arrow-right"></i>
             </div>
+          </div>
+
+          <!-- Color Picker -->
+          <div class="tool-card" data-category="utility">
+            <div class="tool-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Color Picker</h3>
+              <p class="tool-description">
+                Generate color palettes, convert between formats, and find
+                perfect color combinations.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">Color</span>
+                <span class="tag">Design</span>
+              </div>
+            </div>
+            <div class="tool-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+
+          <!-- URL Encoder/Decoder -->
+          <a
+            href="tools/url-encoder-decoder/index.html"
+            class="tool-card"
+            data-category="utility"
+          >
+
           </a>
 
           <!-- URL Shortener -->
@@ -424,6 +559,15 @@
               <i class="fas fa-link"></i>
             </div>
             <div class="tool-content">
+              <h3 class="tool-title">URL Encoder/Decoder</h3>
+              <p class="tool-description">
+                Encode or decode URLs to ensure proper formatting. Convert
+                special characters and spaces for safe URL transmission.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">URL</span>
+                <span class="tag">Encode</span>
+                <span class="tag">Decode</span>
               <h3 class="tool-title">URL Shortener</h3>
               <p class="tool-description">
                 Create short, manageable URLs with custom aliases and click
@@ -439,9 +583,25 @@
             <div class="tool-arrow">
               <i class="fas fa-arrow-right"></i>
             </div>
+          </a>
+
+          <!-- Base64 Encoder/Decoder -->
+          <div class="tool-card" data-category="utility">
+            <div class="tool-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Base64 Encoder</h3>
+              <p class="tool-description">
+                Encode and decode Base64 strings quickly and securely.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">Encode</span>
+                <span class="tag">Security</span>
+
           </div>
 
-<<<          <!-- URL Shortener -->
+        <!-- URL Shortener -->
           <div class="tool-card" data-category="utility" data-wide="true">
             <div class="tool-icon">
               <i class="fas fa-link"></i>
@@ -479,6 +639,28 @@
             </div>
           </div>
 
+
+          <!-- URL Shortener -->
+          <div class="tool-card" data-category="utility" data-wide="true">
+            <div class="tool-icon">
+              <i class="fas fa-link"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">URL Shortener</h3>
+              <p class="tool-description">
+                Create short, manageable URLs with custom aliases and click
+                tracking analytics for better link management.
+              </p>
+              <div class="tool-tags">
+                <span class="tag">URL</span>
+                <span class="tag">Analytics</span>
+                <span class="tag">Tracking</span>
+              </div>
+            </div>
+            <div class="tool-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
 
           <!-- Password Generator -->
           <div class="tool-card" data-category="utility">
@@ -516,8 +698,6 @@
               <i class="fas fa-arrow-right"></i>
             </div>
           </div>
-
-
           <!-- QR Code Generator -->
           <div class="tool-card" data-category="utility">
             <div class="tool-icon">
@@ -675,6 +855,22 @@
               <span>Hacktoberfest</span>
               <span class="year">2025</span>
             </div>
+            </div>
+            <a
+              href="https://github.com/heysaiyad/dev-toolkit"
+              target="_blank"
+              class="btn btn-primary"
+            >
+              <i class="fab fa-github"></i>
+              Start Contributing
+            </a>
+          </div>
+          <div class="contribute-visual">
+            <div class="hacktoberfest-logo">
+              <i class="fas fa-leaf"></i>
+              <span>Hacktoberfest</span>
+              <span class="year">2025</span>
+            </div>
           </div>
         </div>
       </div>
@@ -704,6 +900,15 @@
                 <div class="creator-stat">
                   <i class="fas fa-code"></i>
                   <span>Full Stack Developer</span>
+                </div>
+                <div class="creator-stat">
+                  <i class="fas fa-heart"></i>
+                  <span>Open Source Advocate</span>
+                </div>
+                <div class="creator-stat">
+                  <i class="fas fa-rocket"></i>
+                  <span>Innovation Driven</span>
+                </div>
                 </div>
                 <div class="creator-stat">
                   <i class="fas fa-heart"></i>
