@@ -1,124 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASCII to Binary Converter - DevToolkit</title>
-    <link rel="stylesheet" href="../../style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .tool-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            margin: 0 auto;
-            text-align: center;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASCII to Binary Converter - DevToolkit</title>
 
-        textarea {
-            width: 100%;
-            max-width: 700px;
-            min-height: 120px;
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-family: monospace;
-            font-size: 1rem;
-        }
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="../../style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-            max-width: 700px;
-        }
+  <style>
+    .input-section textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 1rem 3rem 1rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.06);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-family: monospace;
+      font-size: 1rem;
+      resize: vertical;
+    }
 
-        button {
-            flex: 1;
-            padding: 0.75rem 1.25rem;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    /* Quickaction clipboard buttons */
+    .quickaction-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      padding: 0.45rem 0.6rem;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      z-index: 5;
+    }
+    .quickaction-btn:hover {
+      background: var(--primary-color);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
 
-        button:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
+    /* Convert button glow */
+    #convertBtn.btn-primary {
+      box-shadow: 0 8px 28px rgba(255,140,0,0.22);
+      position: relative;
+      overflow: hidden;
+    }
+    #convertBtn.btn-primary::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 40%;
+      height: 100%;
+      transform: skewX(-25deg);
+      background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.25) 55%,
+        rgba(255,255,255,0) 100%
+      );
+    }
+    #convertBtn.btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(255,140,0,0.44);
+      transform: translateY(-3px);
+    }
+    #convertBtn.btn-primary:hover::after {
+      left: 130%;
+      transition: left .8s cubic-bezier(.2,.9,.2,1);
+    }
 
-        .output-label {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .output-section {
-            width: 100%;
-            max-width: 700px;
-            text-align: left;
-        }
-    </style>
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .tool-container { padding: 1rem; }
+      .button-group { flex-direction: column; gap: .75rem; }
+      .quickaction-btn { top: .5rem; right: .5rem; }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
-        </div>
+  <!-- Animated Background -->
+  <div class="animated-bg" aria-hidden="true">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="../../index.html" class="back-button" aria-label="Back to Tools">
+    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+    Back to Tools
+  </a>
+
+  <div class="tool-container">
+    <!-- Header -->
+    <div class="tool-header">
+      <h1 class="tool-title">ASCII to Binary Converter</h1>
+      <p class="tool-subtitle">
+        Convert plain text into binary (8-bit ASCII representation).
+      </p>
     </div>
 
-    <!-- Back Button -->
-    <a href="../../index.html" class="back-button">
-        <i class="fas fa-arrow-left"></i>
-        Back to Tools
-    </a>
-
-    <div class="tool-container">
-        <!-- Header -->
-        <div class="tool-header">
-            <h1 class="tool-title">ASCII to Binary Converter</h1>
-            <p class="tool-subtitle">
-                Convert plain text into binary (8-bit ASCII representation).
-            </p>
-        </div>
-
-        <!-- Tool Content -->
-        <div class="tool-content">
-            <textarea id="asciiInput" placeholder="Type ASCII text here..."></textarea>
-
-            <div class="button-group">
-                <button id="convertBtn">Convert</button>
-                <button id="clearBtn">Clear</button>
-            </div>
-
-            <div class="output-section">
-                <p class="output-label">Binary (space-separated)</p>
-                <textarea id="binaryOutput" readonly placeholder="Binary output will appear here..."></textarea>
-            </div>
-
-            <div class="output-section">
-                <p class="output-label">Binary (comma-separated)</p>
-                <textarea id="binaryCommaOutput" readonly placeholder="Binary output will appear here..."></textarea>
-            </div>
-        </div>
+    <!-- Input Section -->
+    <div class="input-section">
+      <label for="asciiInput">Enter ASCII text</label>
+      <div style="position:relative;">
+        <textarea id="asciiInput" placeholder="Type your text here..." aria-label="ASCII input"></textarea>
+        <button id="pasteBtn" class="quickaction-btn" title="Paste from clipboard" aria-label="Paste from clipboard">📥</button>
+      </div>
+      <p id="statusMsg"></p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button id="convertBtn" class="btn btn-primary">Convert</button>
+      <button id="clearBtn" class="btn btn-secondary">Clear</button>
+    </div>
+
+    <!-- Output Sections -->
+    <div class="input-section">
+      <span class="output-label">Binary (space-separated)</span>
+      <div style="position:relative;">
+        <textarea id="binaryOutput" readonly placeholder="Binary output will appear here..." aria-label="Space-separated binary output"></textarea>
+        <button id="copyBinBtn" class="quickaction-btn" title="Copy space-separated binary" aria-label="Copy space-separated binary">📋</button>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <span class="output-label">Binary (comma-separated)</span>
+      <div style="position:relative;">
+        <textarea id="binaryCommaOutput" readonly placeholder="Comma-separated binary will appear here..." aria-label="Comma-separated binary output"></textarea>
+        <button id="copyCommaBtn" class="quickaction-btn" title="Copy comma-separated binary" aria-label="Copy comma-separated binary">📋</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
